@@ -1,0 +1,18 @@
+1. 表单校验
+``` ts
+const formState = {
+  inputField: '',
+  selectField: undefined
+}
+const rules = {
+    inputField: [{ required: true, message: '请输入', trigger: 'blur' }],
+    selectField: [{ required: true, message: '请选择', trigger: 'change' }]
+}
+```
+做项目的时候遇到的表单校验问题，主要是针对`a-select`组件，`a-select`中已经选择了一项，绑定的值也发生变化了，但是还是没通过校验，出现提示`请选择`，后来发现需要给`selectField`加一个`type`字段，这样就不会报错了
+```ts
+const rules = {
+    inputField: [{ required: true, message: '请输入', trigger: 'blur' }],
+    selectField: [{ required: true, type: 'number', message: '请选择', trigger: 'change' }]
+}
+```
